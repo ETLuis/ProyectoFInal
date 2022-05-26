@@ -9,6 +9,8 @@ public class InterfazGrafica2 extends javax.swing.JFrame {
 
     public InterfazGrafica2() {
         initComponents();
+        this.setLocationRelativeTo(null);
+        this.setSize(1050,750);
     }
 
     @SuppressWarnings("unchecked")
@@ -27,11 +29,15 @@ public class InterfazGrafica2 extends javax.swing.JFrame {
         jButton5 = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
+        jLabel12 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -40,7 +46,7 @@ public class InterfazGrafica2 extends javax.swing.JFrame {
         jLabel1.setText("Introduce una letra");
         jLabel1.setMaximumSize(new java.awt.Dimension(200, 17));
         jLabel1.setMinimumSize(new java.awt.Dimension(200, 17));
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 120, -1, 38));
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 190, -1, 38));
 
         jTextField1.setMargin(new java.awt.Insets(0, 47, 0, 0));
         jTextField1.addActionListener(new java.awt.event.ActionListener() {
@@ -53,7 +59,7 @@ public class InterfazGrafica2 extends javax.swing.JFrame {
                 jTextField1KeyTyped(evt);
             }
         });
-        jPanel1.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(397, 250, 104, 70));
+        jPanel1.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 260, 104, 70));
 
         jButton1.setBackground(new java.awt.Color(255, 174, 0));
         jButton1.setText("Comprobar");
@@ -62,10 +68,10 @@ public class InterfazGrafica2 extends javax.swing.JFrame {
                 jButton1ActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 256, 157, 60));
+        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 300, 160, 50));
 
         jTextField2.setMargin(new java.awt.Insets(0, 95, 0, 0));
-        jPanel1.add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 390, 263, 101));
+        jPanel1.add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 380, 290, 101));
 
         jButton2.setBackground(new java.awt.Color(25, 233, 228));
         jButton2.setText("Escribir Palabra");
@@ -91,7 +97,7 @@ public class InterfazGrafica2 extends javax.swing.JFrame {
                 jButton3ActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 202, 157, 42));
+        jPanel1.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 260, 160, 30));
 
         jButton4.setBackground(new java.awt.Color(254, 1, 181));
         jButton4.setText("Menú Principal");
@@ -100,7 +106,7 @@ public class InterfazGrafica2 extends javax.swing.JFrame {
                 jButton4ActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 530, 154, 70));
+        jPanel1.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 610, 140, 50));
 
         jButton5.setBackground(new java.awt.Color(251, 255, 0));
         jButton5.setText("Comprobar");
@@ -116,26 +122,33 @@ public class InterfazGrafica2 extends javax.swing.JFrame {
 
         jLabel3.setText("0");
         jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(937, 42, -1, -1));
+        jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 170, -1, -1));
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/0Fallos.png"))); // NOI18N
-        jLabel4.setMaximumSize(new java.awt.Dimension(81, 78));
-        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 260, -1, -1));
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 170, -1, -1));
 
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/1Fallo.png"))); // NOI18N
         jLabel5.setVisible(false);
-        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(255, 260, 90, -1));
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 170, -1, -1));
 
         jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/2Fallos.png"))); // NOI18N
         jLabel6.setVisible(false);
-        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 260, -1, -1));
+        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 170, -1, -1));
 
-        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/3Fallos.png"))); // NOI18N
-        jLabel7.setVisible(false);
-        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 260, -1, -1));
+        jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/3Fallos.png"))); // NOI18N
+        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 170, -1, -1));
 
-        jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/4Fallos.png"))); // NOI18N
-        jLabel8.setVisible(false);
-        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 260, -1, -1));
+        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/4Fallos.png"))); // NOI18N
+        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 170, -1, -1));
+
+        jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/5Fallos.png"))); // NOI18N
+        jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 170, -1, -1));
+
+        jLabel11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/6Fallos.png"))); // NOI18N
+        jPanel1.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 170, -1, -1));
+
+        jLabel12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/7Fallos.png"))); // NOI18N
+        jPanel1.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 170, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -143,13 +156,14 @@ public class InterfazGrafica2 extends javax.swing.JFrame {
                 layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(layout.createSequentialGroup()
                                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 1012, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(0, 0, Short.MAX_VALUE))
+                                .addGap(0, 24, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
                 layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(layout.createSequentialGroup()
+                                .addContainerGap()
                                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 711, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(0, 0, Short.MAX_VALUE))
+                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
@@ -159,8 +173,6 @@ public class InterfazGrafica2 extends javax.swing.JFrame {
     String palabraJuego="";
 
 
-
-
     public static boolean letra(String palabraJuego, List<Character> jugadores){
         String letra;
 
@@ -168,14 +180,29 @@ public class InterfazGrafica2 extends javax.swing.JFrame {
 
         jugadores.add(letra.charAt(0));
 
-        InterfazGrafica2.verPalabras(palabraJuego, jugadores);
+
+        InterfazGrafica2.palabra(palabraJuego, jugadores);
 
         return palabraJuego.contains(letra);
     }
 
+
+    public static void palabra(String palabraJuego, List<Character> jugadores){
+
+        List<String> palabras = Arrays.asList("camion", "toro", "perro", "hawaii");
+        Random rand = new Random();
+        palabraJuego = palabras.get(rand.nextInt(palabras.size()));
+
+
+
+        InterfazGrafica2.verPalabras(palabraJuego, jugadores);
+    }
+
+
     public static boolean verPalabras(String palabraJuego, List<Character> jugadores){
         String concatena = "";
         int correctas = 0;
+
 
         for (int i = 0; i < palabraJuego.length(); i++) {
             if (jugadores.contains(palabraJuego.charAt(i))) {
@@ -184,11 +211,14 @@ public class InterfazGrafica2 extends javax.swing.JFrame {
             } else {
                 concatena = concatena + " - ";
             }
+
             jTextField2.setText(concatena);
         }
 
         return (palabraJuego.length() == correctas);
     }
+
+
 
 
     public static void repeticionPalabra(String palabraJuego, List<Character> jugadores){
@@ -231,10 +261,7 @@ public class InterfazGrafica2 extends javax.swing.JFrame {
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {
 
-        List<String> palabras = Arrays.asList("camion", "toro", "perro", "hawaii");
-        Random rand = new Random();
-        palabraJuego = palabras.get(rand.nextInt(palabras.size()));
-        System.out.println(palabraJuego);
+        InterfazGrafica2.repeticionPalabra(palabraJuego, jugadores);
 
     }
 
@@ -261,6 +288,7 @@ public class InterfazGrafica2 extends javax.swing.JFrame {
 
         if(palabraComprob.equals(palabraJuego)){
             JOptionPane.showMessageDialog(null,"Palabra correcta");
+            JOptionPane.showMessageDialog(null,"Has ganado :)");
         }
         else{
             JOptionPane.showMessageDialog(null,"Palabra incorrecta");
@@ -283,26 +311,43 @@ public class InterfazGrafica2 extends javax.swing.JFrame {
             }
 
             if(intentos==3){
-                jLabel7.setVisible(true);
-            }else{
-                jLabel7.setVisible(false);
-            }
-
-            if(intentos==4){
                 jLabel8.setVisible(true);
             }else{
                 jLabel8.setVisible(false);
+            }
+
+            if(intentos==4){
+                jLabel7.setVisible(true);
+            }else{
+                jLabel7.setVisible(false);
 
             }
 
             if(intentos==5){
-                JOptionPane.showMessageDialog(null, "Has perdido :(");
-                jLabel3.setText(""+0);
-
-                InterfazGrafica2.repeticionPalabra(palabraJuego, jugadores);
+                jLabel10.setVisible(true);
+            }else{
+                jLabel10.setVisible(false);
 
             }
 
+            if(intentos==6){
+                jLabel11.setVisible(true);
+            }else{
+                jLabel11.setVisible(false);
+
+            }
+
+            if(intentos==7){
+                jLabel12.setVisible(true);
+                JOptionPane.showMessageDialog(null, "Has perdido :(");
+                intentos=0;
+                i=String.valueOf(intentos);
+                jLabel3.setText(i);
+                InterfazGrafica2.repeticionPalabra(palabraJuego, jugadores);
+            }else{
+                jLabel12.setVisible(false);
+
+            }
 
         }
 
@@ -330,13 +375,17 @@ public class InterfazGrafica2 extends javax.swing.JFrame {
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private static javax.swing.JLabel jLabel5;
-    private static javax.swing.JLabel jLabel6;
-    private static javax.swing.JLabel jLabel7;
-    private static javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     public static javax.swing.JTextField jTextField1;
     private static javax.swing.JTextField jTextField2;
