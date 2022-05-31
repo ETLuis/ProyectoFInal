@@ -1,10 +1,10 @@
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 
-import javax.swing.table.DefaultTableModel;
 import javax.swing.JOptionPane;
+
 
 
 
@@ -14,10 +14,11 @@ public class InterfazGrafica extends javax.swing.JFrame {
         initComponents();
         this.setLocationRelativeTo(null);
         this.setSize(1000,650);
+        //setDefaultOperation(DO_NOTHING_ON_CLOSE);
     }
 
     @SuppressWarnings("unchecked")
-    // <editor-fold defaultstate="collapsed" desc="Generated Code">
+    // <editor-fold defaultstate="collapsed" desc="Generated Code">                          
     private void initComponents() {
 
         buttonGroup1 = new javax.swing.ButtonGroup();
@@ -33,12 +34,18 @@ public class InterfazGrafica extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         setTitle("Menú Principal");
         setBackground(new java.awt.Color(58, 58, 58));
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosing(java.awt.event.WindowEvent evt) {
+                formWindowClosing(evt);
+            }
+        });
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jButton1.setBackground(new java.awt.Color(33, 251, 61));
+        jButton1.setFont(new java.awt.Font("Ubuntu", 1, 15)); // NOI18N
         jButton1.setText("Ahorcado");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -51,6 +58,7 @@ public class InterfazGrafica extends javax.swing.JFrame {
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 160, -1, -1));
 
         jButton2.setBackground(new java.awt.Color(198, 16, 16));
+        jButton2.setFont(new java.awt.Font("Ubuntu", 1, 24)); // NOI18N
         jButton2.setText("Saír");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -63,6 +71,7 @@ public class InterfazGrafica extends javax.swing.JFrame {
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(397, 165, -1, -1));
 
         jButton3.setBackground(new java.awt.Color(0, 255, 22));
+        jButton3.setFont(new java.awt.Font("Ubuntu", 1, 15)); // NOI18N
         jButton3.setText("Banderas");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -107,7 +116,7 @@ public class InterfazGrafica extends javax.swing.JFrame {
         getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 17, -1, 20));
 
         pack();
-    }// </editor-fold>
+    }// </editor-fold>                        
 
 
 
@@ -146,8 +155,16 @@ public class InterfazGrafica extends javax.swing.JFrame {
 
         String url="jdbc:sqlite:/home/dam1/Escritorio/BaseJuego.db";
         Connection connect = null;
+        int i=0;
+        int j=0;
+        try{
+            i=Integer.parseInt(JOptionPane.showInputDialog(null, "¿Quieres conectarte? \n- Pulse 1 para conectar con la Base de Datos \n- Pulse 2 para salir"));
+        }catch(Exception ex){
+            JOptionPane.showMessageDialog(null, ex.getMessage().toString());
+        }
 
-        int i=Integer.parseInt(JOptionPane.showInputDialog(null, "¿Quieres conectarte? \n- Pulse 1 para conectar con la Base de Datos \n- Pulse 2 para salir"));
+
+
 
         if(i==1){
             try{
@@ -160,46 +177,50 @@ public class InterfazGrafica extends javax.swing.JFrame {
             }catch(Exception x){
                 JOptionPane.showMessageDialog(null, x.getMessage().toString());
             }
-
-
-            int j=Integer.parseInt(JOptionPane.showInputDialog(null,"¿Quieres registrarte en la B.D? \n- Pulse 1 para registrarte en la Base de Datos \n- Pulse 2 si quieres borrarte de la Base de Datos? \n- Pulse 3 Para salir del menú"));
-
-            if(j==1){
-                try{
-
-                    PreparedStatement st = connect.prepareStatement("insert into Jugador(ID,Nombre) values(?,?)");
-                    int ID=Integer.parseInt(JOptionPane.showInputDialog("Introduce el ID"));
-                    st.setInt(1, ID);
-                    String Nombre=JOptionPane.showInputDialog("Introduce el Nombre");
-                    st.setString(2,Nombre);
-                    st.execute();
-                    JOptionPane.showMessageDialog(null, "Datos Guardados");
-                    jLabel4.setText(""+ID);
-                    jLabel6.setText(Nombre);
-
-
-                }catch(Exception x){
-                    JOptionPane.showMessageDialog(null, x.getMessage().toString());
-                }
-            } else if(j==2){
-                try{
-
-                    PreparedStatement st = connect.prepareStatement("delete from Jugador where ID=?");
-                    st.setInt(1, Integer.parseInt(JOptionPane.showInputDialog("Introduce tu ID para ser eliminado de la Base de Datos")));
-                    st.execute();
-                    JOptionPane.showMessageDialog(null, "Dato Eliminado");
-
-
-                }catch(Exception x){
-                    JOptionPane.showMessageDialog(null, x.getMessage().toString());
-                }
-            }
-
-            else{
-
-            }
+        }else{
 
         }
+
+        try{
+            j=Integer.parseInt(JOptionPane.showInputDialog(null,"¿Quieres registrarte en la B.D? \n- Pulse 1 para registrarte en la Base de Datos \n- Pulse 2 si quieres borrarte de la Base de Datos \n- Pulse 3 para salir del menú"));
+        }catch(Exception ex){
+            JOptionPane.showMessageDialog(null, ex.getMessage().toString());
+        }
+        if(j==1){
+            try{
+
+                PreparedStatement st = connect.prepareStatement("insert into Jugador(ID,Nombre) values(?,?)");
+                int ID=Integer.parseInt(JOptionPane.showInputDialog("Introduce el ID"));
+                st.setInt(1, ID);
+                String Nombre=JOptionPane.showInputDialog("Introduce el Nombre");
+                st.setString(2,Nombre);
+                st.execute();
+                JOptionPane.showMessageDialog(null, "Datos Guardados");
+                jLabel4.setText(""+ID);
+                jLabel6.setText(Nombre);
+
+
+            }catch(Exception x){
+                JOptionPane.showMessageDialog(null, x.getMessage().toString());
+            }
+        } else if(j==2){
+            try{
+
+                PreparedStatement st = connect.prepareStatement("delete from Jugador where ID=?");
+                st.setInt(1, Integer.parseInt(JOptionPane.showInputDialog("Introduce tu ID para ser eliminado de la Base de Datos")));
+                st.execute();
+                JOptionPane.showMessageDialog(null, "Dato Eliminado");
+
+
+            }catch(Exception x){
+                JOptionPane.showMessageDialog(null, x.getMessage().toString());
+            }
+        }
+
+        else{
+
+        }
+
     }
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {
@@ -207,7 +228,7 @@ public class InterfazGrafica extends javax.swing.JFrame {
         String url="jdbc:sqlite:/home/dam1/Escritorio/BaseJuego.db";
         Connection connect = null;
 
-        int i=Integer.parseInt(JOptionPane.showInputDialog(null, "¿Quieres conectarte? \n- Pulse 1 para conectar con la Base de Datos \n- Pulse 2 para salir"));
+        int i=Integer.parseInt(JOptionPane.showInputDialog(null, "¿Quieres conectarte a la Base de Datos? \n- Pulse 1 para conectar con la Base de Datos \n- Pulse 2 para salir"));
 
         if(i==1){
             try{
@@ -231,6 +252,7 @@ public class InterfazGrafica extends javax.swing.JFrame {
             st.setInt(1, ID);
             String Nombre=JOptionPane.showInputDialog("Introduce el Nombre");
             st.setString(2, Nombre);
+
             jLabel4.setText(""+ID);
             jLabel6.setText(Nombre);
             st.execute();
@@ -241,6 +263,23 @@ public class InterfazGrafica extends javax.swing.JFrame {
         }
 
 
+    }
+
+
+    //else if(eleccion==JOptionPane.NO_OPTION){
+    //      JOptionPane.showMessageDialog(null, "Has cancelado el cierre");
+    //}
+
+    private void formWindowClosing(java.awt.event.WindowEvent evt) {
+        // TODO add your handling code here:
+
+        String botones[] = {"Cerrar","Cancelar"};
+        int eleccion=JOptionPane.showOptionDialog(this, "¿Desea cerrar la aplicación?", "Cerrar", 0, 0, null, botones, this);
+
+        if(eleccion==JOptionPane.YES_OPTION){
+            System.exit(0);
+
+        }
     }
 
 
@@ -277,7 +316,7 @@ public class InterfazGrafica extends javax.swing.JFrame {
 
     }
 
-    // Variables declaration - do not modify
+    // Variables declaration - do not modify                     
     private javax.swing.ButtonGroup buttonGroup1;
     private static javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
@@ -290,5 +329,5 @@ public class InterfazGrafica extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
-    // End of variables declaration
+    // End of variables declaration                   
 }

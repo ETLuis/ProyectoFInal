@@ -1,5 +1,8 @@
+package ahorcado;
+
+
+import com.dam.lectura.LecturaFichero;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
 
@@ -38,6 +41,8 @@ public class InterfazGrafica2 extends javax.swing.JFrame {
         jLabel10 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
+        jLabel13 = new javax.swing.JLabel();
+        jLabel14 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -46,7 +51,7 @@ public class InterfazGrafica2 extends javax.swing.JFrame {
         jLabel1.setText("Introduce una letra");
         jLabel1.setMaximumSize(new java.awt.Dimension(200, 17));
         jLabel1.setMinimumSize(new java.awt.Dimension(200, 17));
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 190, -1, 38));
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 200, -1, 38));
 
         jTextField1.setMargin(new java.awt.Insets(0, 47, 0, 0));
         jTextField1.addActionListener(new java.awt.event.ActionListener() {
@@ -118,10 +123,10 @@ public class InterfazGrafica2 extends javax.swing.JFrame {
         jPanel1.add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 590, -1, -1));
 
         jLabel2.setText("Fallos:");
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(875, 42, -1, -1));
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 50, -1, -1));
 
         jLabel3.setText("0");
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(937, 42, -1, -1));
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 50, 10, -1));
         jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 170, -1, -1));
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/0Fallos.png"))); // NOI18N
@@ -150,6 +155,12 @@ public class InterfazGrafica2 extends javax.swing.JFrame {
         jLabel12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/7Fallos.png"))); // NOI18N
         jPanel1.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 170, -1, -1));
 
+        jLabel13.setText("Puntuación:");
+        jPanel1.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 30, -1, -1));
+
+        jLabel14.setText("0");
+        jPanel1.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(920, 30, 10, -1));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -166,70 +177,70 @@ public class InterfazGrafica2 extends javax.swing.JFrame {
 
     List<Character> jugadores = new ArrayList<>();
     String palabraJuego="";
-
+    int intentos=0;
 
     public static boolean letra(String palabraJuego, List<Character> jugadores){
         String letra;
-
         letra = jTextField1.getText();
+        try{
+            jugadores.add(letra.charAt(0));
+            InterfazGrafica2.verPalabras(palabraJuego, jugadores);
+        }
+        catch(StringIndexOutOfBoundsException ex){
+            JOptionPane.showMessageDialog(null, "Tienes que introducir una letra");
+        }
 
-        jugadores.add(letra.charAt(0));
-
-
-        InterfazGrafica2.palabra(palabraJuego, jugadores);
 
         return palabraJuego.contains(letra);
     }
 
 
-    public static void palabra(String palabraJuego, List<Character> jugadores){
 
-        List<String> palabras = Arrays.asList("camion", "toro", "perro", "hawaii");
-        Random rand = new Random();
-        palabraJuego = palabras.get(rand.nextInt(palabras.size()));
-
-
-
-        InterfazGrafica2.verPalabras(palabraJuego, jugadores);
-    }
-
-
-    public static boolean verPalabras(String palabraJuego, List<Character> jugadores){
+    public static void verPalabras(String palabraJuego, List<Character> jugadores){
         String concatena = "";
-        int correctas = 0;
+        int fallos=0;
+        int puntuacion=0;
 
 
         for (int i = 0; i < palabraJuego.length(); i++) {
             if (jugadores.contains(palabraJuego.charAt(i))) {
                 concatena = concatena + palabraJuego.charAt(i);
-                correctas++;
+
             } else {
                 concatena = concatena + " - ";
+                fallos++;
+
             }
 
             jTextField2.setText(concatena);
         }
 
-        return (palabraJuego.length() == correctas);
+
+
+        if(palabraJuego.equals(concatena)){
+            JOptionPane.showMessageDialog(null, "Has ganado :)");
+            jugadores.clear();
+            jTextField1.setText("");
+            jTextField2.setText("");
+            int u = Integer.parseInt(jLabel14.getText());
+            puntuacion++;
+            u = u + puntuacion;
+            jLabel14.setText(String.valueOf(u));
+
+        }
+
+
+
     }
 
 
 
-
-    public static void repeticionPalabra(String palabraJuego, List<Character> jugadores){
-
-        List<String> palabras = Arrays.asList("camion", "toro", "perro", "hawaii");
-        Random rand = new Random();
-        palabraJuego = palabras.get(rand.nextInt(palabras.size()));
-        System.out.println(palabraJuego);
-
-    }
 
 
     private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {
         // TODO add your handling code here:s
         InterfazGrafica2.letra(palabraJuego, jugadores);
-
+        jTextField1.setText("");
 
 
     }
@@ -246,6 +257,8 @@ public class InterfazGrafica2 extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {
 
         InterfazGrafica2.letra(palabraJuego, jugadores);
+        jTextField1.setText("");
+
 
     }
 
@@ -256,14 +269,21 @@ public class InterfazGrafica2 extends javax.swing.JFrame {
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {
 
-        InterfazGrafica2.repeticionPalabra(palabraJuego, jugadores);
+
+        List<String> palabras = new ArrayList<>();
+        LecturaFichero.crearPalabra(palabras);
+
+        Random rand = new Random();
+        palabraJuego = palabras.get(rand.nextInt(palabras.size()));
+        System.out.println(palabraJuego);
 
     }
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {
         // TODO add your handling code here:
-        InterfazGrafica2 obx=new InterfazGrafica2();
-        obx.setVisible(false);
+        dispose();
+
+
 
 
 
@@ -271,22 +291,22 @@ public class InterfazGrafica2 extends javax.swing.JFrame {
 
     private void jTextField3ActionPerformed(java.awt.event.ActionEvent evt) {
         // TODO add your handling code here:
-
-    }
-
-
-    int intentos=0;
-    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {
-        // TODO add your handling code here:
         String palabraComprob=jTextField3.getText();
 
 
         if(palabraComprob.equals(palabraJuego)){
             JOptionPane.showMessageDialog(null,"Palabra correcta");
             JOptionPane.showMessageDialog(null,"Has ganado :)");
+            jTextField1.setText("");
+            jTextField2.setText("");
+            jTextField3.setText("");
+            puntuacion++;
+            jLabel14.setText(String.valueOf(puntuacion));
+
         }
         else{
             JOptionPane.showMessageDialog(null,"Palabra incorrecta");
+            jTextField3.setText("");
             intentos++;
             String i=String.valueOf(intentos);
 
@@ -335,10 +355,93 @@ public class InterfazGrafica2 extends javax.swing.JFrame {
             if(intentos==7){
                 jLabel12.setVisible(true);
                 JOptionPane.showMessageDialog(null, "Has perdido :(");
+                jTextField2.setText(palabraJuego);
+                palabraJuego=null;
                 intentos=0;
                 i=String.valueOf(intentos);
                 jLabel3.setText(i);
-                InterfazGrafica2.repeticionPalabra(palabraJuego, jugadores);
+
+            }else{
+                jLabel12.setVisible(false);
+
+            }
+
+        }
+    }
+
+    int puntuacion=0;
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {
+        // TODO add your handling code here:
+        String palabraComprob=jTextField3.getText();
+
+
+        if(palabraComprob.equals(palabraJuego)){
+            JOptionPane.showMessageDialog(null,"Palabra correcta");
+            JOptionPane.showMessageDialog(null,"Has ganado :)");
+            jTextField1.setText("");
+            jTextField2.setText("");
+            jTextField3.setText("");
+            puntuacion++;
+            jLabel14.setText(String.valueOf(puntuacion));
+
+        }
+        else{
+            JOptionPane.showMessageDialog(null,"Palabra incorrecta");
+            jTextField3.setText("");
+            intentos++;
+            String i=String.valueOf(intentos);
+
+            jLabel3.setText(i);
+
+            if(intentos==1){
+                jLabel4.setVisible(false);
+                jLabel5.setVisible(true);
+            }else{
+                jLabel5.setVisible(false);
+            }
+
+            if(intentos==2){
+                jLabel6.setVisible(true);
+            }else{
+                jLabel6.setVisible(false);
+            }
+
+            if(intentos==3){
+                jLabel8.setVisible(true);
+            }else{
+                jLabel8.setVisible(false);
+            }
+
+            if(intentos==4){
+                jLabel7.setVisible(true);
+            }else{
+                jLabel7.setVisible(false);
+
+            }
+
+            if(intentos==5){
+                jLabel10.setVisible(true);
+            }else{
+                jLabel10.setVisible(false);
+
+            }
+
+            if(intentos==6){
+                jLabel11.setVisible(true);
+            }else{
+                jLabel11.setVisible(false);
+
+            }
+
+            if(intentos==7){
+                jLabel12.setVisible(true);
+                JOptionPane.showMessageDialog(null, "Has perdido :(");
+                jTextField2.setText(palabraJuego);
+                palabraJuego=null;
+                intentos=0;
+                i=String.valueOf(intentos);
+                jLabel3.setText(i);
+
             }else{
                 jLabel12.setVisible(false);
 
@@ -347,6 +450,73 @@ public class InterfazGrafica2 extends javax.swing.JFrame {
         }
 
     }
+
+
+
+    public void imagenes(){
+        intentos++;
+        String i=String.valueOf(intentos);
+
+        jLabel3.setText(i);
+
+        if(intentos==1){
+            jLabel4.setVisible(false);
+            jLabel5.setVisible(true);
+        }else{
+            jLabel5.setVisible(false);
+        }
+
+        if(intentos==2){
+            jLabel6.setVisible(true);
+        }else{
+            jLabel6.setVisible(false);
+        }
+
+        if(intentos==3){
+            jLabel8.setVisible(true);
+        }else{
+            jLabel8.setVisible(false);
+        }
+
+        if(intentos==4){
+            jLabel7.setVisible(true);
+        }else{
+            jLabel7.setVisible(false);
+
+        }
+
+        if(intentos==5){
+            jLabel10.setVisible(true);
+        }else{
+            jLabel10.setVisible(false);
+
+        }
+
+        if(intentos==6){
+            jLabel11.setVisible(true);
+        }else{
+            jLabel11.setVisible(false);
+
+        }
+
+        if(intentos==7){
+            jLabel12.setVisible(true);
+            JOptionPane.showMessageDialog(null, "Has perdido :(");
+            jTextField2.setText(palabraJuego);
+            palabraJuego=null;
+            intentos=0;
+            i=String.valueOf(intentos);
+            jLabel3.setText(i);
+
+        }else{
+            jLabel12.setVisible(false);
+
+        }
+
+
+    }
+
+
 
 
     public static void main(String args[]) {
@@ -373,10 +543,12 @@ public class InterfazGrafica2 extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
+    private static javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
+    private static javax.swing.JLabel jLabel3;
+    private static javax.swing.JLabel jLabel4;
+    private static javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
