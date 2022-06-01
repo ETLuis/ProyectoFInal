@@ -8,7 +8,7 @@ import java.util.Random;
 
 import javax.swing.JOptionPane;
 
-public class InterfazGrafica2 extends javax.swing.JFrame {
+public class InterfazGrafica2 extends javax.swing.JFrame{
 
     public InterfazGrafica2() {
         initComponents();
@@ -48,6 +48,7 @@ public class InterfazGrafica2 extends javax.swing.JFrame {
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jLabel1.setFont(new java.awt.Font("Ubuntu", 1, 15)); // NOI18N
         jLabel1.setText("Introduce una letra");
         jLabel1.setMaximumSize(new java.awt.Dimension(200, 17));
         jLabel1.setMinimumSize(new java.awt.Dimension(200, 17));
@@ -561,3 +562,4 @@ public class InterfazGrafica2 extends javax.swing.JFrame {
 
 
 }
+

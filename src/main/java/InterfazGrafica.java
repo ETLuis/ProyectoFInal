@@ -1,3 +1,4 @@
+package ahorcado;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -18,7 +19,7 @@ public class InterfazGrafica extends javax.swing.JFrame {
     }
 
     @SuppressWarnings("unchecked")
-    // <editor-fold defaultstate="collapsed" desc="Generated Code">                          
+    // <editor-fold defaultstate="collapsed" desc="Generated Code">
     private void initComponents() {
 
         buttonGroup1 = new javax.swing.ButtonGroup();
@@ -33,6 +34,8 @@ public class InterfazGrafica extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        jButton6 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         setTitle("Menú Principal");
@@ -52,10 +55,10 @@ public class InterfazGrafica extends javax.swing.JFrame {
                 jButton1ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(144, 442, 122, 65));
+        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 440, 122, 65));
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ahorcadoLogo.png"))); // NOI18N
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 160, -1, -1));
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 170, -1, -1));
 
         jButton2.setBackground(new java.awt.Color(198, 16, 16));
         jButton2.setFont(new java.awt.Font("Ubuntu", 1, 24)); // NOI18N
@@ -68,7 +71,7 @@ public class InterfazGrafica extends javax.swing.JFrame {
         getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(786, 534, 167, 60));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/juegoBanderas.jpeg"))); // NOI18N
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(397, 165, -1, -1));
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 170, -1, -1));
 
         jButton3.setBackground(new java.awt.Color(0, 255, 22));
         jButton3.setFont(new java.awt.Font("Ubuntu", 1, 15)); // NOI18N
@@ -78,7 +81,7 @@ public class InterfazGrafica extends javax.swing.JFrame {
                 jButton3ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(453, 442, 131, 65));
+        getContentPane().add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 440, 131, 65));
 
         jButton4.setBackground(new java.awt.Color(254, 254, 254));
         jButton4.setText("Registrar");
@@ -115,8 +118,21 @@ public class InterfazGrafica extends javax.swing.JFrame {
         jLabel6.setText("XXXX");
         getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 17, -1, 20));
 
+        jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/piedra papel tijera logo .jpg"))); // NOI18N
+        getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 170, 220, 220));
+
+        jButton6.setBackground(new java.awt.Color(0, 255, 37));
+        jButton6.setFont(new java.awt.Font("Ubuntu", 1, 15)); // NOI18N
+        jButton6.setText("Piedra, papel, tijera!");
+        jButton6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton6ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 440, 180, 60));
+
         pack();
-    }// </editor-fold>                        
+    }// </editor-fold>
 
 
 
@@ -158,7 +174,7 @@ public class InterfazGrafica extends javax.swing.JFrame {
         int i=0;
         int j=0;
         try{
-            i=Integer.parseInt(JOptionPane.showInputDialog(null, "¿Quieres conectarte? \n- Pulse 1 para conectar con la Base de Datos \n- Pulse 2 para salir"));
+            i=Integer.parseInt(JOptionPane.showInputDialog(null, "¿Quieres conectarte? \n- Pulse 1 para conectar con la Base de Datos"));
         }catch(Exception ex){
             JOptionPane.showMessageDialog(null, ex.getMessage().toString());
         }
@@ -178,7 +194,7 @@ public class InterfazGrafica extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(null, x.getMessage().toString());
             }
         }else{
-
+            JOptionPane.showMessageDialog(null, "Operación");
         }
 
         try{
@@ -282,6 +298,17 @@ public class InterfazGrafica extends javax.swing.JFrame {
         }
     }
 
+    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {
+        // TODO add your handling code here:
+
+        InterfazGrafica4 obx=new InterfazGrafica4();
+        obx.setVisible(true);
+
+        InterfazGrafica obx2 =new InterfazGrafica();
+        obx2.setVisible(false);
+
+    }
+
 
     public static void main(String args[]) {
 
@@ -316,18 +343,20 @@ public class InterfazGrafica extends javax.swing.JFrame {
 
     }
 
-    // Variables declaration - do not modify                     
+    // Variables declaration - do not modify
     private javax.swing.ButtonGroup buttonGroup1;
     private static javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
+    private javax.swing.JButton jButton6;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel8;
     // End of variables declaration                   
 }
