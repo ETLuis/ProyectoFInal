@@ -191,6 +191,9 @@ public class InterfazGrafica2 extends javax.swing.JFrame{
             JOptionPane.showMessageDialog(null, "Tienes que introducir una letra");
         }
 
+        if(palabraJuego.equals("")){
+            JOptionPane.showMessageDialog(null, "Tienes que generar una palabra");
+        }
 
         return palabraJuego.contains(letra);
     }
@@ -203,20 +206,89 @@ public class InterfazGrafica2 extends javax.swing.JFrame{
         int puntuacion=0;
 
 
+
         for (int i = 0; i < palabraJuego.length(); i++) {
             if (jugadores.contains(palabraJuego.charAt(i))) {
                 concatena = concatena + palabraJuego.charAt(i);
 
             } else {
                 concatena = concatena + " - ";
-                fallos++;
 
             }
 
             jTextField2.setText(concatena);
         }
+        if (jugadores.contains(palabraJuego)) {
+
+        } else {
+            fallos++;
+            System.out.println(fallos);
+        }
+
+        if(fallos==1){
+            int i=Integer.parseInt(jLabel3.getText());
+
+            jLabel3.setText(String.valueOf(i+1));
+
+            if(i==0){
+                jLabel4.setVisible(false);
+                jLabel5.setVisible(true);
+            }else{
+                jLabel5.setVisible(false);
+            }
+
+            if(i==1){
+                jLabel6.setVisible(true);
+            }else{
+                jLabel6.setVisible(false);
+            }
+
+            if(i==2){
+                jLabel8.setVisible(true);
+            }else{
+                jLabel8.setVisible(false);
+            }
+
+            if(i==3){
+                jLabel7.setVisible(true);
+            }else{
+                jLabel7.setVisible(false);
+
+            }
+
+            if(i==4){
+                jLabel10.setVisible(true);
+            }else{
+                jLabel10.setVisible(false);
+
+            }
+
+            if(i==5){
+                jLabel11.setVisible(true);
+            }else{
+                jLabel11.setVisible(false);
+
+            }
+
+            if(i==6){
+                jLabel12.setVisible(true);
+                JOptionPane.showMessageDialog(null, "Has perdido :(");
+                jTextField2.setText(palabraJuego);
+                palabraJuego=null;
 
 
+            }else{
+                jLabel12.setVisible(false);
+
+            }
+
+
+        }
+
+
+        if(palabraJuego.equals("")){
+            palabraJuego="ñ";
+        }
 
         if(palabraJuego.equals(concatena)){
             JOptionPane.showMessageDialog(null, "Has ganado :)");
@@ -541,18 +613,18 @@ public class InterfazGrafica2 extends javax.swing.JFrame{
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel12;
+    private static javax.swing.JLabel jLabel10;
+    private static javax.swing.JLabel jLabel11;
+    private static javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private static javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel2;
     private static javax.swing.JLabel jLabel3;
     private static javax.swing.JLabel jLabel4;
     private static javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
+    private static javax.swing.JLabel jLabel6;
+    private static javax.swing.JLabel jLabel7;
+    private static javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     public static javax.swing.JTextField jTextField1;
@@ -562,4 +634,3 @@ public class InterfazGrafica2 extends javax.swing.JFrame{
 
 
 }
-
