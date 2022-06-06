@@ -6,9 +6,12 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
+
 import javax.swing.JOptionPane;
 
 public class InterfazGrafica2 extends javax.swing.JFrame{
+
+
 
     public InterfazGrafica2() {
         initComponents();
@@ -127,7 +130,7 @@ public class InterfazGrafica2 extends javax.swing.JFrame{
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 50, -1, -1));
 
         jLabel3.setText("0");
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 50, 10, -1));
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 50, 30, -1));
         jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 170, -1, -1));
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/0Fallos.png"))); // NOI18N
@@ -160,7 +163,7 @@ public class InterfazGrafica2 extends javax.swing.JFrame{
         jPanel1.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 30, -1, -1));
 
         jLabel14.setText("0");
-        jPanel1.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(920, 30, 10, -1));
+        jPanel1.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(920, 30, 30, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -179,13 +182,16 @@ public class InterfazGrafica2 extends javax.swing.JFrame{
     List<Character> jugadores = new ArrayList<>();
     String palabraJuego="";
     int intentos=0;
+    int fallo=0;
+    int puntuacion=0;
 
-    public static boolean letra(String palabraJuego, List<Character> jugadores){
-        String letra;
-        letra = jTextField1.getText();
+    public static boolean letra(String palabraJuego, List<Character> jugadores,int fallo){
+        String letra = jTextField1.getText();
+
+
         try{
             jugadores.add(letra.charAt(0));
-            InterfazGrafica2.verPalabras(palabraJuego, jugadores);
+            InterfazGrafica2.verPalabras(palabraJuego,jugadores,letra, fallo);
         }
         catch(StringIndexOutOfBoundsException ex){
             JOptionPane.showMessageDialog(null, "Tienes que introducir una letra");
@@ -200,15 +206,23 @@ public class InterfazGrafica2 extends javax.swing.JFrame{
 
 
 
-    public static void verPalabras(String palabraJuego, List<Character> jugadores){
+    public static void verPalabras(String palabraJuego, List<Character> jugadores,String letra, int fallos){
         String concatena = "";
-        int fallos=0;
-        int puntuacion=0;
-
+        boolean clean=false;
 
 
         for (int i = 0; i < palabraJuego.length(); i++) {
+            if (letra.equalsIgnoreCase(""+palabraJuego.charAt(i))) {
+
+
+                clean=true;
+            }
+        }
+
+        for (int i = 0; i < palabraJuego.length(); i++) {
             if (jugadores.contains(palabraJuego.charAt(i))) {
+
+
                 concatena = concatena + palabraJuego.charAt(i);
 
             } else {
@@ -218,14 +232,16 @@ public class InterfazGrafica2 extends javax.swing.JFrame{
 
             jTextField2.setText(concatena);
         }
-        if (jugadores.contains(palabraJuego)) {
 
-        } else {
+
+
+        if(!clean){
             fallos++;
-            System.out.println(fallos);
         }
 
-        if(fallos==1){
+
+
+        if(fallos>=1){
             int i=Integer.parseInt(jLabel3.getText());
 
             jLabel3.setText(String.valueOf(i+1));
@@ -235,8 +251,8 @@ public class InterfazGrafica2 extends javax.swing.JFrame{
                 jLabel5.setVisible(true);
             }else{
                 jLabel5.setVisible(false);
-            }
 
+            }
             if(i==1){
                 jLabel6.setVisible(true);
             }else{
@@ -278,41 +294,37 @@ public class InterfazGrafica2 extends javax.swing.JFrame{
 
 
             }else{
-                jLabel12.setVisible(false);
 
             }
 
 
+            if(palabraJuego.equals("")){
+                palabraJuego="ñ";
+            }
         }
-
-
-        if(palabraJuego.equals("")){
-            palabraJuego="ñ";
-        }
-
-        if(palabraJuego.equals(concatena)){
+        if(palabraJuego.equalsIgnoreCase(concatena)){
             JOptionPane.showMessageDialog(null, "Has ganado :)");
+
             jugadores.clear();
             jTextField1.setText("");
             jTextField2.setText("");
             int u = Integer.parseInt(jLabel14.getText());
+            int puntuacion=0;
             puntuacion++;
             u = u + puntuacion;
             jLabel14.setText(String.valueOf(u));
+            jLabel4.setVisible(true);
 
         }
-
 
 
     }
 
 
 
-
-
     private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {
         // TODO add your handling code here:s
-        InterfazGrafica2.letra(palabraJuego, jugadores);
+        InterfazGrafica2.letra(palabraJuego, jugadores,fallo);
         jTextField1.setText("");
 
 
@@ -329,7 +341,7 @@ public class InterfazGrafica2 extends javax.swing.JFrame{
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {
 
-        InterfazGrafica2.letra(palabraJuego, jugadores);
+        InterfazGrafica2.letra(palabraJuego, jugadores,fallo);
         jTextField1.setText("");
 
 
@@ -442,7 +454,7 @@ public class InterfazGrafica2 extends javax.swing.JFrame{
         }
     }
 
-    int puntuacion=0;
+
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {
         // TODO add your handling code here:
         String palabraComprob=jTextField3.getText();
