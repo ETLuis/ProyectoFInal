@@ -1,12 +1,12 @@
-package ahorcado;
+package ProyectoFinal;
 
 import java.util.Random;
 import javax.swing.JOptionPane;
 
-public class InterfazGrafica3 extends javax.swing.JFrame {
+public class Banderas extends javax.swing.JFrame {
 
 
-    public InterfazGrafica3() {
+    public Banderas() {
         initComponents();
         this.setLocationRelativeTo(null);
         this.setSize(800,650);
@@ -879,13 +879,13 @@ public class InterfazGrafica3 extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(InterfazGrafica3.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Banderas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(InterfazGrafica3.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Banderas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(InterfazGrafica3.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Banderas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(InterfazGrafica3.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Banderas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
         //</editor-fold>
@@ -895,7 +895,7 @@ public class InterfazGrafica3 extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new InterfazGrafica3().setVisible(true);
+                new Banderas().setVisible(true);
             }
         });
     }

@@ -1,4 +1,4 @@
-package ahorcado;
+package ProyectoFinal;
 
 
 import com.dam.lectura.LecturaFichero;
@@ -9,11 +9,11 @@ import java.util.Random;
 
 import javax.swing.JOptionPane;
 
-public class InterfazGrafica2 extends javax.swing.JFrame{
+public class Ahorcado extends javax.swing.JFrame{
 
 
 
-    public InterfazGrafica2() {
+    public Ahorcado() {
         initComponents();
         this.setLocationRelativeTo(null);
         this.setSize(1050,750);
@@ -191,7 +191,7 @@ public class InterfazGrafica2 extends javax.swing.JFrame{
 
         try{
             jugadores.add(letra.charAt(0));
-            InterfazGrafica2.verPalabras(palabraJuego,jugadores,letra, fallo);
+            Ahorcado.verPalabras(palabraJuego,jugadores,letra, fallo);
         }
         catch(StringIndexOutOfBoundsException ex){
             JOptionPane.showMessageDialog(null, "Tienes que introducir una letra");
@@ -324,7 +324,7 @@ public class InterfazGrafica2 extends javax.swing.JFrame{
 
     private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {
         // TODO add your handling code here:s
-        InterfazGrafica2.letra(palabraJuego, jugadores,fallo);
+        Ahorcado.letra(palabraJuego, jugadores,fallo);
         jTextField1.setText("");
 
 
@@ -341,7 +341,7 @@ public class InterfazGrafica2 extends javax.swing.JFrame{
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {
 
-        InterfazGrafica2.letra(palabraJuego, jugadores,fallo);
+        Ahorcado.letra(palabraJuego, jugadores,fallo);
         jTextField1.setText("");
 
 
@@ -607,7 +607,7 @@ public class InterfazGrafica2 extends javax.swing.JFrame{
     public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new InterfazGrafica2().setVisible(true);
+                new Ahorcado().setVisible(true);
 
 
             }
